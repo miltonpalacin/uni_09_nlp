@@ -1,0 +1,5 @@
+anyfilename
+.ipynb_checkpoints/.gitignore-checkpoint
+**/*-checkpoint*
+**/*.pyc
+ds0*.*.csv
