@@ -3,3 +3,4 @@ anyfilename
 **/*-checkpoint*
 **/*.pyc
 ds0*.*.csv
+dataset_base.csv
