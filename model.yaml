@@ -1,0 +1,475 @@
+backend: tensorflow
+class_name: Functional
+config:
+  input_layers:
+  - - input_1
+    - 0
+    - 0
+  - - input_2
+    - 0
+    - 0
+  layers:
+  - !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+    dictitems:
+      class_name: InputLayer
+      config:
+        batch_input_shape: !!python/tuple
+        - null
+        - 3000
+        dtype: float32
+        name: input_1
+        ragged: false
+        sparse: false
+      inbound_nodes: []
+      name: input_1
+    state:
+      object_id: 0
+      ref_count: 1
+  - !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+    dictitems:
+      class_name: Embedding
+      config:
+        activity_regularizer: null
+        batch_input_shape: !!python/tuple
+        - null
+        - null
+        dtype: float32
+        embeddings_constraint: null
+        embeddings_initializer: !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+          dictitems:
+            class_name: RandomUniform
+            config:
+              maxval: 0.05
+              minval: -0.05
+              seed: null
+          state:
+            object_id: 1
+            ref_count: 1
+        embeddings_regularizer: null
+        input_dim: 13279
+        input_length: null
+        mask_zero: false
+        name: embedding
+        output_dim: 200
+        trainable: true
+      inbound_nodes:
+      - - - input_1
+          - 0
+          - 0
+          - {}
+      name: embedding
+    state:
+      object_id: 2
+      ref_count: 1
+  - !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+    dictitems:
+      class_name: LSTM
+      config:
+        activation: tanh
+        activity_regularizer: null
+        bias_constraint: null
+        bias_initializer: !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+          dictitems:
+            class_name: Zeros
+            config: {}
+            shared_object_id: 5
+          state:
+            object_id: 5
+            ref_count: 2
+        bias_regularizer: null
+        dropout: 0.4
+        dtype: float32
+        go_backwards: false
+        implementation: 2
+        kernel_constraint: null
+        kernel_initializer: !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+          dictitems:
+            class_name: GlorotUniform
+            config:
+              seed: null
+            shared_object_id: 3
+          state:
+            object_id: 3
+            ref_count: 2
+        kernel_regularizer: null
+        name: lstm
+        recurrent_activation: sigmoid
+        recurrent_constraint: null
+        recurrent_dropout: 0.0
+        recurrent_initializer: !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+          dictitems:
+            class_name: Orthogonal
+            config:
+              gain: 1.0
+              seed: null
+            shared_object_id: 4
+          state:
+            object_id: 4
+            ref_count: 2
+        recurrent_regularizer: null
+        return_sequences: true
+        return_state: true
+        stateful: false
+        time_major: false
+        trainable: true
+        unit_forget_bias: true
+        units: 300
+        unroll: false
+        use_bias: true
+      inbound_nodes:
+      - - - embedding
+          - 0
+          - 0
+          - {}
+      name: lstm
+    state:
+      object_id: 7
+      ref_count: 1
+  - !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+    dictitems:
+      class_name: InputLayer
+      config:
+        batch_input_shape: !!python/tuple
+        - null
+        - null
+        dtype: float32
+        name: input_2
+        ragged: false
+        sparse: false
+      inbound_nodes: []
+      name: input_2
+    state:
+      object_id: 8
+      ref_count: 1
+  - !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+    dictitems:
+      class_name: LSTM
+      config:
+        activation: tanh
+        activity_regularizer: null
+        bias_constraint: null
+        bias_initializer: !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+          dictitems:
+            class_name: Zeros
+            config: {}
+            shared_object_id: 11
+          state:
+            object_id: 11
+            ref_count: 2
+        bias_regularizer: null
+        dropout: 0.4
+        dtype: float32
+        go_backwards: false
+        implementation: 2
+        kernel_constraint: null
+        kernel_initializer: !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+          dictitems:
+            class_name: GlorotUniform
+            config:
+              seed: null
+            shared_object_id: 9
+          state:
+            object_id: 9
+            ref_count: 2
+        kernel_regularizer: null
+        name: lstm_1
+        recurrent_activation: sigmoid
+        recurrent_constraint: null
+        recurrent_dropout: 0.0
+        recurrent_initializer: !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+          dictitems:
+            class_name: Orthogonal
+            config:
+              gain: 1.0
+              seed: null
+            shared_object_id: 10
+          state:
+            object_id: 10
+            ref_count: 2
+        recurrent_regularizer: null
+        return_sequences: true
+        return_state: true
+        stateful: false
+        time_major: false
+        trainable: true
+        unit_forget_bias: true
+        units: 300
+        unroll: false
+        use_bias: true
+      inbound_nodes:
+      - - - lstm
+          - 0
+          - 0
+          - {}
+      name: lstm_1
+    state:
+      object_id: 13
+      ref_count: 1
+  - !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+    dictitems:
+      class_name: Embedding
+      config:
+        activity_regularizer: null
+        batch_input_shape: !!python/tuple
+        - null
+        - null
+        dtype: float32
+        embeddings_constraint: null
+        embeddings_initializer: !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+          dictitems:
+            class_name: RandomUniform
+            config:
+              maxval: 0.05
+              minval: -0.05
+              seed: null
+          state:
+            object_id: 14
+            ref_count: 1
+        embeddings_regularizer: null
+        input_dim: 1333
+        input_length: null
+        mask_zero: false
+        name: embedding_1
+        output_dim: 200
+        trainable: true
+      inbound_nodes:
+      - - - input_2
+          - 0
+          - 0
+          - {}
+      name: embedding_1
+    state:
+      object_id: 15
+      ref_count: 1
+  - !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+    dictitems:
+      class_name: LSTM
+      config:
+        activation: tanh
+        activity_regularizer: null
+        bias_constraint: null
+        bias_initializer: !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+          dictitems:
+            class_name: Zeros
+            config: {}
+            shared_object_id: 18
+          state:
+            object_id: 18
+            ref_count: 2
+        bias_regularizer: null
+        dropout: 0.4
+        dtype: float32
+        go_backwards: false
+        implementation: 2
+        kernel_constraint: null
+        kernel_initializer: !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+          dictitems:
+            class_name: GlorotUniform
+            config:
+              seed: null
+            shared_object_id: 16
+          state:
+            object_id: 16
+            ref_count: 2
+        kernel_regularizer: null
+        name: lstm_2
+        recurrent_activation: sigmoid
+        recurrent_constraint: null
+        recurrent_dropout: 0.0
+        recurrent_initializer: !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+          dictitems:
+            class_name: Orthogonal
+            config:
+              gain: 1.0
+              seed: null
+            shared_object_id: 17
+          state:
+            object_id: 17
+            ref_count: 2
+        recurrent_regularizer: null
+        return_sequences: true
+        return_state: true
+        stateful: false
+        time_major: false
+        trainable: true
+        unit_forget_bias: true
+        units: 300
+        unroll: false
+        use_bias: true
+      inbound_nodes:
+      - - - lstm_1
+          - 0
+          - 0
+          - {}
+      name: lstm_2
+    state:
+      object_id: 20
+      ref_count: 1
+  - !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+    dictitems:
+      class_name: LSTM
+      config:
+        activation: tanh
+        activity_regularizer: null
+        bias_constraint: null
+        bias_initializer: !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+          dictitems:
+            class_name: Zeros
+            config: {}
+            shared_object_id: 23
+          state:
+            object_id: 23
+            ref_count: 2
+        bias_regularizer: null
+        dropout: 0.4
+        dtype: float32
+        go_backwards: false
+        implementation: 2
+        kernel_constraint: null
+        kernel_initializer: !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+          dictitems:
+            class_name: GlorotUniform
+            config:
+              seed: null
+            shared_object_id: 21
+          state:
+            object_id: 21
+            ref_count: 2
+        kernel_regularizer: null
+        name: lstm_3
+        recurrent_activation: sigmoid
+        recurrent_constraint: null
+        recurrent_dropout: 0.0
+        recurrent_initializer: !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+          dictitems:
+            class_name: Orthogonal
+            config:
+              gain: 1.0
+              seed: null
+            shared_object_id: 22
+          state:
+            object_id: 22
+            ref_count: 2
+        recurrent_regularizer: null
+        return_sequences: true
+        return_state: true
+        stateful: false
+        time_major: false
+        trainable: true
+        unit_forget_bias: true
+        units: 300
+        unroll: false
+        use_bias: true
+      inbound_nodes:
+      - - - embedding_1
+          - 0
+          - 0
+          - &id001 {}
+        - - lstm_2
+          - 0
+          - 1
+          - *id001
+        - - lstm_2
+          - 0
+          - 2
+          - *id001
+      name: lstm_3
+    state:
+      object_id: 25
+      ref_count: 1
+  - !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+    dictitems:
+      class_name: AttentionLayer
+      config:
+        dtype: float32
+        name: attention_layer
+        trainable: true
+      inbound_nodes:
+      - - - lstm_2
+          - 0
+          - 0
+          - &id002 {}
+        - - lstm_3
+          - 0
+          - 0
+          - *id002
+      name: attention_layer
+    state:
+      object_id: 26
+      ref_count: 1
+  - !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+    dictitems:
+      class_name: Concatenate
+      config:
+        axis: -1
+        dtype: float32
+        name: concat_layer
+        trainable: true
+      inbound_nodes:
+      - - - lstm_3
+          - 0
+          - 0
+          - &id003 {}
+        - - attention_layer
+          - 0
+          - 0
+          - *id003
+      name: concat_layer
+    state:
+      object_id: 27
+      ref_count: 1
+  - !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+    dictitems:
+      class_name: TimeDistributed
+      config:
+        dtype: float32
+        layer: !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+          dictitems:
+            class_name: Dense
+            config:
+              activation: softmax
+              activity_regularizer: null
+              bias_constraint: null
+              bias_initializer: !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+                dictitems:
+                  class_name: Zeros
+                  config: {}
+                state:
+                  object_id: 29
+                  ref_count: 1
+              bias_regularizer: null
+              dtype: float32
+              kernel_constraint: null
+              kernel_initializer: !!python/object/new:tensorflow.python.keras.utils.generic_utils.SharedObjectConfig
+                dictitems:
+                  class_name: GlorotUniform
+                  config:
+                    seed: null
+                state:
+                  object_id: 28
+                  ref_count: 1
+              kernel_regularizer: null
+              name: dense
+              trainable: true
+              units: 1333
+              use_bias: true
+          state:
+            object_id: 30
+            ref_count: 1
+        name: time_distributed
+        trainable: true
+      inbound_nodes:
+      - - - concat_layer
+          - 0
+          - 0
+          - {}
+      name: time_distributed
+    state:
+      object_id: 31
+      ref_count: 1
+  name: model
+  output_layers:
+  - - time_distributed
+    - 0
+    - 0
+keras_version: 2.5.0
